@@ -1,0 +1,30 @@
+/* InicioAn.css */
+.inicio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alinea al inicio del eje vertical */
+    padding-top: 50px; /* Espacio superior opcional */
+    height: 100vh;
+    background-image: url('/src/assets/condode.png'); /* Ruta de la imagen */
+    background-size: cover;
+    background-position: center;
+}
+
+  
+.inicio-box {
+    width: 100%;
+    max-width: 1300px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255); /* Fondo blanco con opacidad */
+    border-radius: 90px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 17px;
+    margin-top: 30px; /* Ajusta el valor según sea necesario */
+}
+
+  
+  
+  
