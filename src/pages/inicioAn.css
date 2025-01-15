@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start; /* Alinea al inicio del eje vertical */
-    padding-top: 50px; /* Espacio superior opcional */
     height: 100vh;
     background-image: url('/src/assets/condode.png'); /* Ruta de la imagen */
     background-size: cover;
