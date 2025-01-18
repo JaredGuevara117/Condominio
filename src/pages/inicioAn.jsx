@@ -1,21 +1,24 @@
 import React from "react";
 import "./InicioAn.css";
+import LineChart from "./Linechart";
+import BarChart from "./Barchart";
 
 const InicioAn = () => {
   return (
     <div className="inicio-container">
+      {/* Encabezado de bienvenida */}
       <div className="inicio-box">
         <h1>¡Bienvenido al Portal de Administración del Condominio, Lucero González!</h1>
       </div>
 
+      {/* Contenedor de estadísticas */}
       <div className="stats-container">
-        {/* Contenedor de gráficos */}
+        {/* Gráfica de línea - Pagos */}
         <div className="stats-box">
           <div className="stats-title">Pagos</div>
           <div className="stats-value">$7,033.22</div>
           <div className="stats-chart">
-            {/* Aquí puedes integrar un gráfico con una librería como Chart.js */}
-            <p>Gráfico de línea aquí</p>
+            <LineChart />
           </div>
           <div className="stats-footer">
             <span>Esta semana</span>
@@ -23,19 +26,21 @@ const InicioAn = () => {
             <span>Este año</span>
           </div>
         </div>
+
+        {/* Gráfica de barras - Total del año */}
         <div className="stats-box">
-          <div className="stats-title">Total del año</div>
+          <div className="stats-title">Total del año 2024</div>
           <div className="stats-value">$1,068,900</div>
           <div className="stats-chart">
-            {/* Otro gráfico */}
-            <p>Gráfico de barras aquí</p>
+            <BarChart />
           </div>
           <div className="stats-footer">
-            <span>2025 ↑ 3%</span>
+            <span>2024 ↑ 11%</span>
           </div>
         </div>
       </div>
 
+      {/* Contenedor de detalles */}
       <div className="details-container">
         {/* Órdenes recientes */}
         <div className="orders-box">
