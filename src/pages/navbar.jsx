@@ -19,7 +19,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink 
-            to="/usuarios" 
+            to="/usuariosAn" 
             className={({ isActive }) => (isActive ? "active-link" : "")}>
             Usuarios
           </NavLink>
