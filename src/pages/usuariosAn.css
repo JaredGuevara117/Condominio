@@ -1,0 +1,84 @@
+.usuariosAn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('/src/assets/condode.png');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.usuarios-content {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.usuarios-tabla, .usuarios-formulario {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+h2 {
+    color: green;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f5f5f5;
+}
+
+.activo {
+    color: white;
+    background: green;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.inactivo {
+    color: white;
+    background: red;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.usuarios-formulario input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.usuarios-formulario button {
+    width: 100%;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.usuarios-formulario button:hover {
+    background: darkgreen;
+}
