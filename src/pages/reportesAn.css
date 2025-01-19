@@ -1,0 +1,81 @@
+.reportes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    gap: 20px; /* Espacio entre secciones */
+    height: 89.6vh;
+    background-image: url('/src/assets/condode.png');
+    background-position: center;
+    background-size: cover;
+    padding: 20px;
+    overflow-y: auto;
+    justify-items: center; /* Centra horizontalmente los elementos */
+    align-items: center;
+}
+
+  .reportes-container h3{
+    color: #27ae60;
+  }
+  
+  
+  
+  .owners{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .activities, .permissions {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .active {
+    color: rgb(104, 243, 104);
+    font-weight: bold;
+  }
+
+  .sales {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .chart-container canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  
