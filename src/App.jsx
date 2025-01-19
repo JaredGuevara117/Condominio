@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import InicioAn from "./pages/inicioAn";
 import Navbar from "./pages/navbar"; // Importa tu componente Navbar
 import UsuariosAn from "./pages/usuariosAn";
+import PagosAn from "./pages/pagosAn";
+import MultasAn from "./pages/multasAn";
 
 const App = () => {
   const location = useLocation();
@@ -18,6 +20,8 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/inicioAn" element={<InicioAn />} />
         <Route path="/usuariosAn" element={<UsuariosAn />} />
+        <Route path="/pagosAn" element={<PagosAn/>} />
+        <Route path="/multasAn" element={<MultasAn/>} />
         {/* Agrega más rutas según sea necesario */}
       </Routes>
     </>

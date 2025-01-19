@@ -26,14 +26,14 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink 
-            to="/pagos" 
+            to="/pagosAn" 
             className={({ isActive }) => (isActive ? "active-link" : "")}>
             Pagos
           </NavLink>
         </li>
         <li>
           <NavLink 
-            to="/multas" 
+            to="/multasAn" 
             className={({ isActive }) => (isActive ? "active-link" : "")}>
             Multas
           </NavLink>

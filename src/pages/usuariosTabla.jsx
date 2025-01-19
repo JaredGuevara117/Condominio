@@ -5,7 +5,10 @@ const usuariosData = [
   { nombre: "Jane Cooper", rol: "Dueño", telefono: "(225) 555-0118", email: "jane@microsoft.com", torre: "1", estado: "Activo" },
   { nombre: "Floyd Miles", rol: "Dueño", telefono: "(205) 555-0100", email: "floyd@yahoo.com", torre: "4", estado: "Inactivo" },
   { nombre: "Ronald Richards", rol: "Dueño", telefono: "(302) 555-0107", email: "ronald@adobe.com", torre: "10", estado: "Inactivo" },
-  { nombre: "Marvin McKinney", rol: "Dueño", telefono: "(252) 555-0126", email: "marvin@tesla.com", torre: "7", estado: "Activo" }
+  { nombre: "Marvin McKinney", rol: "Dueño", telefono: "(252) 555-0126", email: "marvin@tesla.com", torre: "7", estado: "Activo" },
+  { nombre: "Ana García", rol: "Inquilino", telefono: "(55) 555-1234", email: "ana@gmail.com", torre: "3", estado: "Activo" },
+  { nombre: "Carlos Pérez", rol: "Inquilino", telefono: "(55) 555-5678", email: "carlos@gmail.com", torre: "5", estado: "Inactivo" },
+  { nombre: "María López", rol: "Inquilino", telefono: "(55) 555-8765", email: "maria@gmail.com", torre: "2", estado: "Activo" }
 ];
 
 const UsuariosTabla = () => {

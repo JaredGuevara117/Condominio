@@ -3,82 +3,159 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 89.6vh;
     background-image: url('/src/assets/condode.png');
     background-size: cover;
     background-position: center;
     padding: 20px;
+    overflow: hidden;
 }
 
-.usuarios-content {
+  .usuarios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -60px;
+  }
+
+  .usuarios-content {
     display: flex;
     gap: 20px;
-    width: 90%;
+    width: 90%; /* Se reduce el ancho para mayor control */
     justify-content: space-between;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en columnas si no caben horizontalmente */
+    max-width: 90vw; /* Limita el ancho máximo del contenedor */
 }
 
-.usuarios-tabla, .usuarios-formulario {
+.metric-card {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    min-width: 120px;
+  }
+  
+  .metric-card h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #28a745;
+  }
+  
+  .metric-card p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .usuarios-tabla, .usuarios-formulario h2{
+    color: #28a745;
+  }
+  .usuarios-tabla, .usuarios-formulario {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 45%;
+    flex: 1 1 45%; /* Toma el 45% del espacio disponible y se adapta */
+    max-width: 600px; /* Limita el ancho máximo */
+    min-width: 300px; /* Asegura que no se reduzca demasiado */
+    box-sizing: border-box;
 }
 
-h2 {
-    color: green;
+.usuarios-tabla {
+    overflow: hidden; /* Agrega scroll horizontal si es necesario */
+    max-width: 100%; /* Asegura que no se salga del contenedor */
 }
 
-table {
+.usuarios-tabla table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 600px; /* Evita que se encoja demasiado en pantallas pequeñas */
+    table-layout: fixed; /* Distribuye mejor las columnas */
 }
 
-th, td {
+.usuarios-tabla th, .usuarios-tabla td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
+    color: #555;
 }
 
-th {
-    background-color: #f5f5f5;
-}
 
-.activo {
-    color: white;
-    background: green;
-    padding: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
 
-.inactivo {
-    color: white;
-    background: red;
-    padding: 5px;
-    border-radius: 5px;
-    text-align: center;
-}
+.usuarios-tabla th {
+    background: #f8f9fa;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: black;
+  }
 
-.usuarios-formulario input {
+  .usuarios-tabla .activo {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .usuarios-tabla .inactivo {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  .buscador {
     width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .usuarios-formulario{
+    max-height: 500px; /* Limita la altura del formulario */
+    overflow-y: auto;
+  }
+
+  .usuarios-formulario input {
+    width: 100%;
+    padding: 20px;
     margin: 5px 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .usuarios-formulario button {
     width: 100%;
     padding: 10px;
-    background: green;
+    background: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .usuarios-formulario button:hover {
-    background: darkgreen;
+    background: #218838;
+}
+
+@media screen and (max-width: 768px) {
+    .usuarios-content {
+        flex-direction: column; /* Cambia la dirección a columnas */
+        align-items: center;
+    }
+
+    .usuarios-tabla, .usuarios-formulario {
+        width: 100%; /* Ocupan el 100% del contenedor en pantallas pequeñas */
+        max-width: none;
+    }
 }
