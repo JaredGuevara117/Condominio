@@ -1,0 +1,162 @@
+/* PagosAn.css */
+
+.pagos-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 89.6vh;
+    background-image: url('/src/assets/condode.png');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    overflow: hidden;
+    
+    position: relative;
+}
+.pagos-container h3{
+    color: #27ae60;
+}
+
+.ganancias-pagos {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.ganancias{
+    background-color: #DCFAED;
+}
+.pagos-pendientes{
+    background-color: #F5F6F8;
+}
+.ganancias, .pagos-pendientes {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.monto-verde {
+    color: #27ae60;
+    font-size: 24px;
+}
+
+.monto-rojo {
+    color: #e74c3c;
+    font-size: 24px;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtro {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #e0e0e0;
+    font-size: 16px;
+}
+
+.filtro.activo {
+    background-color: #007bff;
+    color: white;
+}
+
+.tabla-pagos, .tabla-pendientes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-pagos th, .tabla-pagos td, .tabla-pendientes th, .tabla-pendientes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla-pagos th, .tabla-pendientes th {
+    background-color: #f2f2f2;
+}
+
+.completado {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.rechazado {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.pendiente {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.pagos-historial {
+    flex: 2;
+    margin-right: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ordenes-recientes {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.ordenes-recientes h3 {
+    margin-bottom: 10px;
+}
+
+.ordenes-pendientes {
+    position: absolute;
+    top: 50%;
+    right: 55px;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 20px; /* Ajusta para que coincida con ordenes-recientes */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 800px; /* Igual al ancho de ordenes-recientes */
+    overflow: hidden; /* Evita desbordes */
+}
+
+.ordenes-pendientes h3 {
+    margin-bottom: 10px;
+}
+
+.tabla-pendientes {
+    width: 100%; /* Se adapta completamente al contenedor */
+    border-collapse: collapse;
+    margin: 0; /* Elimina márgenes adicionales */
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-pendientes th, .tabla-pendientes td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
