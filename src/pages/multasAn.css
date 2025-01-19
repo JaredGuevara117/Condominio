@@ -15,14 +15,27 @@
   .multas-container h3{
     color: #27ae60;
   }
-  .registrar-multa, .gestionar-multas {
+  
+  .registrar-multa {
     background: white;
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: 1.2rem; /* Reducido */
     flex: 1;
+    max-width: 45%; /* Ajustar tamaño máximo del ancho */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    margin: 0 10px; /* Añadido un margen lateral */
+    box-sizing: border-box;
+}
   
+.gestionar-multas {
+    background: white;
+    border-radius: 10px;
+    padding: 1.2rem; /* Reducido */
+    flex: 1;
+    max-width: 45%; /* Ajustar tamaño máximo del ancho */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px; /* Añadido un margen lateral */
+}
   
   
   .form-group {
@@ -40,6 +53,7 @@
     padding: 0.75rem;
     border: 1px solid #d1d5db;
     border-radius: 5px;
+    box-sizing: border-box;
   }
   
   .steps-container {
@@ -79,7 +93,7 @@
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background 0.3s ease;
   }

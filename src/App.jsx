@@ -6,6 +6,7 @@ import Navbar from "./pages/navbar"; // Importa tu componente Navbar
 import UsuariosAn from "./pages/usuariosAn";
 import PagosAn from "./pages/pagosAn";
 import MultasAn from "./pages/multasAn";
+import ReportesAn from "./pages/reportesAn";
 
 const App = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/usuariosAn" element={<UsuariosAn />} />
         <Route path="/pagosAn" element={<PagosAn/>} />
         <Route path="/multasAn" element={<MultasAn/>} />
+        <Route path="/reportesAn" element={<ReportesAn/>} />
         {/* Agrega más rutas según sea necesario */}
       </Routes>
     </>
