@@ -1,5 +1,5 @@
 import React from "react";
-import "./InicioAn.css";
+import "./inicioAn.css";
 import LineChart from "./Linechart";
 import BarChart from "./Barchart";
 
