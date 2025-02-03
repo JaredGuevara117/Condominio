@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Login() {
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    navigate("/inicioAn"); // Redirige a la página de InicioAn
+    const telefono = event.target.phone.value;
+    const contrasena = event.target.password.value;
+
+    try {
+      const response = await fetch("http://localhost:4001/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ telefono, contrasena }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        setError(error);
+        return;
+      }
+
+      const { user } = await response.json();
+      console.log("Usuario recibido del backend:", user); // Depuración
+
+      // Guardar el usuario en el almacenamiento local
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirigir según el rol del usuario
+      if (user.rol === "administrador") {
+        navigate("/inicioAn");
+      } else if (user.rol === "inquilino") {
+        navigate("/inicioIn");
+      } else {
+        setError("Rol no reconocido");
+      }
+    } catch (err) {
+      setError("Error al iniciar sesión. Inténtalo nuevamente.");
+      console.error(err);
+    }
   };
 
   return (
@@ -29,6 +65,7 @@ function Login() {
             </span>
           </div>
           <a href="#" className="forgot-password">Olvidé mi contraseña</a>
+          {error && <p className="error-message">{error}</p>}
           <button type="submit">ENTRAR</button>
         </form>
       </div>
