@@ -155,7 +155,3 @@ const Navbar = () => {
       nuevasNotificaciones={nuevasNotificaciones}
       handleLogout={handleLogout}
     />
-  );
-};
-
-export default Navbar;
