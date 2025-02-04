@@ -20,7 +20,7 @@ const MultasAn = () => {
 
   const fetchMultas = async () => {
     try {
-      const response = await fetch("http://localhost:4001/multas/getmultas");
+      const response = await fetch("https://api-75yd.onrender.com/multas/getmultas");
       const data = await response.json();
       setMultas(data);
     } catch (error) {
@@ -44,7 +44,7 @@ const MultasAn = () => {
     
 
     try {
-      const response = await fetch("http://localhost:4001/multas", {
+      const response = await fetch("https://api-75yd.onrender.com/multas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(multaData),

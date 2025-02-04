@@ -15,7 +15,7 @@ const Notificaciones = () => {
   const fetchNotificaciones = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4001/notificaciones/${departamento}/${torre}`
+        `https://api-75yd.onrender.com/notificaciones/${departamento}/${torre}`
       );
       const data = await response.json();
       if (Array.isArray(data)) {
@@ -40,7 +40,7 @@ const Notificaciones = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4001/notificaciones/${id}`, {
+      const response = await fetch(`https://api-75yd.onrender.com/notificaciones/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {

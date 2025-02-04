@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./Navbar.css";
 
-const socket = io("http://localhost:4001");
+const socket = io("https://api-75yd.onrender.com");
 
 const NavbarAdmin = ({ setNuevasNotificaciones, nuevasNotificaciones, handleLogout }) => (
   <nav className="navbar">
@@ -108,7 +108,7 @@ const Navbar = () => {
       const { departamento, torre } = user;
       try {
         const response = await fetch(
-          `http://localhost:4001/notificaciones/${departamento}/${torre}`
+          `https://api-75yd.onrender.com/notificaciones/${departamento}/${torre}`
         );
         const data = await response.json();
         if ((Array.isArray(data) && data.length > 0) || (data.data && data.data.length > 0)) {
