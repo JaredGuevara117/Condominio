@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
-import "./Navbar.css";
+import "./navbar.css";
 
 const socket = io("https://api-75yd.onrender.com");
 

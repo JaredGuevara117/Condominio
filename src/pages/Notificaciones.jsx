@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Notificaciones.css"; // Crea este archivo para los estilos que necesites
+import "./notificaciones.css"; // Crea este archivo para los estilos que necesites
 
 const Notificaciones = () => {
   const [notificaciones, setNotificaciones] = useState([]);
