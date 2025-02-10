@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 import "./multasAn.css";
 
 const MultasAn = () => {
   const [form, setForm] = useState({
-    nombre: "",
-    email: "",
-    telefono: "",
-    torre: "",
     departamento: "",
+    torre: "",
     motivo: "",
     cantidad: ""
   });
-
-  const [multas, setMultas] = useState([]); // Estado para almacenar las multas
+  const [multas, setMultas] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const modalRef = useRef(null);
 
   useEffect(() => {
-    fetchMultas(); // Obtener multas al cargar el componente
+    fetchMultas();
   }, []);
 
   const fetchMultas = async () => {
@@ -34,14 +35,14 @@ const MultasAn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
+    
     const multaData = {
-      cantidad: parseFloat(form.cantidad) || 0,  // Convierte a número y maneja NaN
+      cantidad: parseFloat(form.cantidad) || 0,
       departamento: form.departamento,
       torre: form.torre,
       motivo: form.motivo
     };
-    
 
     try {
       const response = await fetch("https://api-75yd.onrender.com/multas", {
@@ -52,15 +53,18 @@ const MultasAn = () => {
 
       const result = await response.json();
       if (response.ok) {
-        alert("Multa registrada con éxito.");
-        fetchMultas(); // Refrescar la lista de multas
+        setModalMessage("Multa registrada con éxito.");
+        fetchMultas();
       } else {
-        alert("Error: " + result.message);
+        setModalMessage("Error: " + result.message);
       }
     } catch (error) {
-      console.error("Error al registrar la multa y notificación:", error.stack);
-      res.status(500).json({ message: "Error al registrar la multa", error: error.message });
-    }    
+      setModalMessage("Error al registrar la multa.");
+    } finally {
+      setLoading(false);
+      setModalOpen(true);
+      setTimeout(() => setModalOpen(false), 3000);
+    }
   };
 
   return (
@@ -84,11 +88,20 @@ const MultasAn = () => {
             <label htmlFor="cantidad">Monto ($)</label>
             <input type="number" id="cantidad" placeholder="Ej. 100" value={form.cantidad} onChange={handleChange} required />
           </div>
-          <button type="submit" className="boton">Registrar Multa</button>
+          <button type="submit" className="boton" disabled={loading}>
+            {loading ? "Registrando..." : "Registrar Multa"}
+          </button>
         </form>
       </div>
 
-      {/* Tabla de Gestión de Multas */}
+      <CSSTransition nodeRef={modalRef} in={modalOpen} timeout={300} classNames="modal" unmountOnExit>
+        <div className="modal-overlay">
+          <div ref={modalRef} className="modal-content">
+            {modalMessage}
+          </div>
+        </div>
+      </CSSTransition>
+
       <div className="gestionar-multas">
         <h3>Gestionar multas</h3>
         <table>
@@ -120,6 +133,45 @@ const MultasAn = () => {
           </tbody>
         </table>
       </div>
+
+      <style>
+        {`
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .modal-enter {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        .modal-enter-active {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 300ms, transform 300ms;
+        }
+        .modal-exit {
+          opacity: 1;
+        }
+        .modal-exit-active {
+          opacity: 0;
+          transform: scale(0.9);
+          transition: opacity 300ms, transform 300ms;
+        }
+        .modal-content {
+          background: white;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          border-radius: 5px;
+        }
+        `}
+      </style>
     </div>
   );
 };
