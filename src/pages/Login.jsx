@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+ // Importar jwt-decode
 import "./Login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import candadoImg from "../assets/candad.png"; // Importación correcta
 
 function Login() {
   const navigate = useNavigate();
@@ -9,48 +12,59 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setError(""); // Limpiar errores previos
+  
     const telefono = event.target.phone.value;
     const contrasena = event.target.password.value;
-
+  
     try {
       const response = await fetch("https://api-75yd.onrender.com/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ telefono, contrasena }),
       });
-
+  
       if (!response.ok) {
-        const { error } = await response.json();
-        setError(error);
-        return;
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error al iniciar sesión.");
       }
-
-      const { user } = await response.json();
-      console.log("Usuario recibido del backend:", user); // Depuración
-
-      // Guardar el usuario en el almacenamiento local
+  
+      const { user, token } = await response.json();
+  
+      
+      // 🔹 Decodificar el token de forma segura
+      let decodedToken;
+      try {
+        decodedToken = jwtDecode(token);
+      } catch (decodeError) {
+        throw new Error("Token inválido.");
+      }
+  
+      // Guardar token y usuario en localStorage
+      localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-
+  
       // Redirigir según el rol del usuario
-      if (user.rol === "administrador") {
-        navigate("/inicioAn");
-      } else if (user.rol === "inquilino") {
-        navigate("/inicioIn");
-      } else {
-        setError("Rol no reconocido");
+      switch (decodedToken.rol) {
+        case "administrador":
+          navigate("/inicioAn");
+          break;
+        case "inquilino":
+          navigate("/inicioIn");
+          break;
+        default:
+          throw new Error("Rol no reconocido");
       }
     } catch (err) {
-      setError("Error al iniciar sesión. Inténtalo nuevamente.");
-      console.error(err);
+      setError(err.message);
+      console.error("Error en el login:", err);
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
-        <img src="/src/assets/candad.png" alt="Logo" className="login-logo" />
+        <img src={candadoImg} alt="Logo" className="login-logo" />
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <input type="tel" name="phone" placeholder="Número telefónico" required />
