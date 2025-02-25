@@ -8,6 +8,7 @@ const Notificaciones = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   // Aseguramos que el usuario tenga las propiedades necesarias
   const departamento = user?.departamento;
@@ -16,7 +17,7 @@ const Notificaciones = () => {
   const fetchNotificaciones = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4001/notificaciones/${departamento}/${torre}`,
+        `https://api-75yd.onrender.com/notificaciones/${departamento}/${torre}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -48,6 +49,9 @@ const Notificaciones = () => {
     try {
       const response = await fetch(`http://localhost:4001/notificaciones/${id}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         headers: {
           Authorization: `Bearer ${token}`,
         },

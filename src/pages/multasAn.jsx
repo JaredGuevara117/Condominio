@@ -18,13 +18,16 @@ const MultasAn = () => {
   const token = localStorage.getItem("token");
   console.log("Token guardado en localStorage:", token);
 
+  const token = localStorage.getItem("token");
+  console.log("Token guardado en localStorage:", token);
+
   useEffect(() => {
     fetchMultas();
   }, []);
 
   const fetchMultas = async () => {
     try {
-      const response = await fetch("http://localhost:4001/multas/getmultas", {
+      const response = await fetch("https://api-75yd.onrender.com/multas/getmultas", {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -57,8 +60,13 @@ const MultasAn = () => {
         headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
          },
+        headers: { "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+         },
         body: JSON.stringify(multaData),
       });
+
+      console.log(multaData);
 
       console.log(multaData);
 

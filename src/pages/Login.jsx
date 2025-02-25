@@ -43,6 +43,7 @@ function Login() {
       // Guardar token y usuario en localStorage
       localStorage.setItem("token", token);
       console.log("Token guardado en localStorage:", token);
+      console.log("Token guardado en localStorage:", token);
       localStorage.setItem("user", JSON.stringify(user));
   
       // Redirigir según el rol del usuario

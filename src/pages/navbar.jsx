@@ -99,6 +99,7 @@ const Navbar = () => {
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchNotificaciones = async () => {
@@ -109,7 +110,7 @@ const Navbar = () => {
       const { departamento, torre } = user;
       try {
         const response = await fetch(
-          `http://localhost:4001/notificaciones/${departamento}/${torre}`,
+          `https://api-75yd.onrender.com/notificaciones/${departamento}/${torre}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -144,6 +145,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // Elimina los datos del usuario
+    localStorage.removeItem("token"); // Elimina el token
     localStorage.removeItem("token"); // Elimina el token
     navigate("/"); // Redirige a la página de inicio de sesión
   };
