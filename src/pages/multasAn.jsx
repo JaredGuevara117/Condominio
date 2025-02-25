@@ -15,13 +15,20 @@ const MultasAn = () => {
   const [modalMessage, setModalMessage] = useState("");
   const modalRef = useRef(null);
 
+  const token = localStorage.getItem("token");
+  console.log("Token guardado en localStorage:", token);
+
   useEffect(() => {
     fetchMultas();
   }, []);
 
   const fetchMultas = async () => {
     try {
-      const response = await fetch("https://api-75yd.onrender.com/multas/getmultas");
+      const response = await fetch("http://localhost:4001/multas/getmultas", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
       const data = await response.json();
       setMultas(data);
     } catch (error) {
@@ -45,11 +52,15 @@ const MultasAn = () => {
     };
 
     try {
-      const response = await fetch("https://api-75yd.onrender.com/multas", {
+      const response = await fetch("http://localhost:4001/multas", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+         },
         body: JSON.stringify(multaData),
       });
+
+      console.log(multaData);
 
       const result = await response.json();
       if (response.ok) {

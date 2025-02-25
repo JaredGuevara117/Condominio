@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./navbar.css";
 
-const socket = io("https://api-75yd.onrender.com");
+const socket = io("http://localhost:4001");
 
 const NavbarAdmin = ({ setNuevasNotificaciones, nuevasNotificaciones, handleLogout }) => (
   <nav className="navbar">
@@ -98,6 +98,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchNotificaciones = async () => {
@@ -108,7 +109,12 @@ const Navbar = () => {
       const { departamento, torre } = user;
       try {
         const response = await fetch(
-          `https://api-75yd.onrender.com/notificaciones/${departamento}/${torre}`
+          `http://localhost:4001/notificaciones/${departamento}/${torre}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const data = await response.json();
         if ((Array.isArray(data) && data.length > 0) || (data.data && data.data.length > 0)) {
@@ -138,6 +144,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user"); // Elimina los datos del usuario
+    localStorage.removeItem("token"); // Elimina el token
     navigate("/"); // Redirige a la página de inicio de sesión
   };
 
