@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 import "./navbar.css";
 
-const socket = io("http://localhost:4001");
+const socket = io("https://api-75yd.onrender.com");
 
 const NavbarAdmin = ({ setNuevasNotificaciones, nuevasNotificaciones, handleLogout }) => (
   <nav className="navbar">

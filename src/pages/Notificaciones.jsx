@@ -46,7 +46,7 @@ const Notificaciones = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4001/notificaciones/${id}`, {
+      const response = await fetch(`https://api-75yd.onrender.com/notificaciones/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

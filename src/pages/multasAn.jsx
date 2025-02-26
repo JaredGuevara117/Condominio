@@ -53,7 +53,7 @@ const MultasAn = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:4001/multas", {
+      const response = await fetch("https://api-75yd.onrender.com/multas", {
         method: "POST",
         headers: { "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`

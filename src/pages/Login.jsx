@@ -18,7 +18,7 @@ function Login() {
     const contrasena = event.target.password.value;
   
     try {
-      const response = await fetch("http://localhost:4001/login", {
+      const response = await fetch("https://api-75yd.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ telefono, contrasena }),
