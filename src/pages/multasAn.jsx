@@ -18,8 +18,6 @@ const MultasAn = () => {
   const token = localStorage.getItem("token");
   console.log("Token guardado en localStorage:", token);
 
-  const token = localStorage.getItem("token");
-  console.log("Token guardado en localStorage:", token);
 
   useEffect(() => {
     fetchMultas();
