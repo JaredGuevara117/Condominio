@@ -99,7 +99,6 @@ const Navbar = () => {
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchNotificaciones = async () => {
