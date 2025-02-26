@@ -8,7 +8,6 @@ const Notificaciones = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
-  const token = localStorage.getItem("token");
 
   // Aseguramos que el usuario tenga las propiedades necesarias
   const departamento = user?.departamento;
