@@ -1,83 +1,91 @@
 /* Login.css */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url('/src/assets/condomini.png');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .login-box {
-    width: 100%;
-    max-width: 500px;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    box-sizing: border-box;
-  }
-  
-  .login-logo {
-    width: 120px;
-    margin-bottom: 25px;
-  }
-  
-  .input-group {
-    position: relative;
-    margin-bottom: 35px;
-  }
-  
-  .input-group input {
-    width: 100%;
-    padding: 15px 50px 15px 15px; /* Espacio adicional a la derecha para el ícono */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
-  
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('/src/assets/condomini.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.login-logo {
+  width: 120px;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 35px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px 50px 15px 15px; /* Espacio adicional a la derecha para el ícono */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
 .input-group .input-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px; /* Ajusta la posición desde el borde derecho */
-    transform: translateY(-50%);
-    color: #555; /* Opcional: define un color para el ícono */
-    pointer-events: none; /* Evita que el ícono interfiera con la interacción del usuario */
-    font-size: 18px;
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Ajusta la posición desde el borde derecho */
+  transform: translateY(-50%);
+  color: #555; /* Opcional: define un color para el ícono */
+  pointer-events: none; /* Evita que el ícono interfiera con la interacción del usuario */
+  font-size: 18px;
 }
-  
-  .forgot-password {
-    display: block;
-    margin-bottom: 15px;
-    text-align: right;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .forgot-password:hover {
-    text-decoration: underline;
-  }
-  
-  button {
-    width: 100%;
-    padding: 15px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
+
+.input-group.remember-me {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remember-me-label {
+  display: flex;
+  align-items: center;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #218838;
+}

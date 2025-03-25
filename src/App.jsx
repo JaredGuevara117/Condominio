@@ -9,6 +9,7 @@ import ReportesAn from "./pages/reportesAn";
 import InicioIn from "./pages/inicioIn";
 import Navbar from "./pages/navbar"; // Importa tu componente Navbar
 import Notificaciones from "./pages/Notificaciones";
+import Perfil from "./pages/perfil";
 
 // Componente para proteger las rutas
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -73,6 +74,14 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/perfil"
+          element={
+            <ProtectedRoute allowedRole="inquilino">
+              <Perfil />
+            </ProtectedRoute>
+          }
+        />
         
 
         <Route

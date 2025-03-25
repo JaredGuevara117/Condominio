@@ -76,6 +76,11 @@ const NavbarInquilino = ({ setNuevasNotificaciones, nuevasNotificaciones, handle
           Notificaciones
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/perfil" className={({ isActive }) => (isActive ? "active-link" : "")}>
+          Perfil
+        </NavLink>
+      </li>
     </ul>
     <div className="navbar-icons">
       <NavLink
@@ -99,6 +104,36 @@ const Navbar = () => {
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("id");
+
+  useEffect(() => {
+    const verificarToken = async () => {
+      try {
+        const response = await fetch("https://api-75yd.onrender.com/login/verificarToken", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: userId }),
+        });
+
+        if (response.status === 401) {
+          // Si el token no es válido, redirige al login y elimina el token del localStorage
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+          localStorage.removeItem("telefono");
+          localStorage.removeItem("rol");
+          localStorage.removeItem("rememberMe");
+          localStorage.removeItem("id");
+          navigate("/");
+        }
+      } catch (err) {
+        console.error("Error al verificar el token:", err);
+        // En caso de error, redirige al login
+        navigate("/");
+      }
+    };
+
+    verificarToken();
+  }, [userId, navigate]);
 
   useEffect(() => {
     const fetchNotificaciones = async () => {
@@ -142,11 +177,26 @@ const Navbar = () => {
     }
   }, [location]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user"); // Elimina los datos del usuario
-    localStorage.removeItem("token"); // Elimina el token
-    localStorage.removeItem("token"); // Elimina el token
-    navigate("/"); // Redirige a la página de inicio de sesión
+  const handleLogout = async () => {
+    try {
+      // Llamada a la API para eliminar el token de la base de datos
+      await fetch("https://api-75yd.onrender.com/login/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telefono: user.telefono }),
+      });
+
+      // Elimina los datos del usuario y el token del localStorage
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      localStorage.removeItem("telefono");
+      localStorage.removeItem("rol");
+      localStorage.removeItem("rememberMe");
+
+      navigate("/"); // Redirige a la página de inicio de sesión
+    } catch (err) {
+      console.error("Error al cerrar sesión:", err);
+    }
   };
 
   if (!user) return null; // No mostrar Navbar si no hay usuario
