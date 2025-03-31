@@ -31,7 +31,7 @@ function ChangePasswordModal({ isOpen, onClose }) {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:4001/recuperacion/solicitar-cambio", {
+      const response = await fetch("https://api-75yd.onrender.com/recuperacion/solicitar-cambio", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ correoOtelefono }),
@@ -59,7 +59,7 @@ function ChangePasswordModal({ isOpen, onClose }) {
     }
 
     try {
-      const response = await fetch("http://localhost:4001/recuperacion/cambiar-contrasena", {
+      const response = await fetch("https://api-75yd.onrender.com/recuperacion/cambiar-contrasena", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, nuevaContrasena: newPassword, logoutAll }),
